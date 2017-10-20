@@ -1,0 +1,63 @@
+body {
+  padding: 20px;
+  font: 14px "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+.ball-history {
+  float: right;
+}
+.ball-history h4 {
+  text-transform: uppercase;
+}
+
+.ball-history .balls .ball {
+  padding: 5px 14px 5px 14px;
+  margin: 5px;
+}
+
+.last-ball span {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.last-ball .number {
+  font-size: 30px;
+}
+
+.ticket {
+  width: 300px;
+  height: 300px;
+  margin: 40px;
+  display: inline-block;
+}
+
+.ticket-cell {
+  float: left;
+  border-width: 1px;
+  border-style: solid;
+  color: grey;
+  border-color:lightgray;
+  width: 60px;
+  height: 60px;
+  line-height:60px;
+  text-align: center;
+  font-size: 18px;
+}
+
+.ticket-cell.selected {
+  background-color: rgb(0, 112, 186);
+  color: white;
+}
+
+.ticket-wrapper {
+  margin: auto;
+  max-width: 760px;
+}
+
+.button-set > * {
+  margin: 10px;
+}
+
+.button-set {
+  float: right;
+}
