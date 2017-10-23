@@ -1,22 +1,17 @@
 const express = require('express');
-const BALL_MODEL = require('../api/models/BallModel');
+const constants = require('../constants');
+const BALL_MODEL = require('../models/BallModel');
+const TICKET_MODEL = require('../models/TicketModel');
 const randomUtils = require('../helpers/randomUtils');
 
 const router = express.Router();
-const TICKET_NUM = 4;
-const CELL_NUM = 25;
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  let ticketValues = [];
-  for (let i = 0; i < TICKET_NUM; i++) {
-    let randomBalls = randomUtils.randomBalls();
-    ticketValues.push(randomBalls.slice(0, CELL_NUM));
-  } 
+router.get('/', function (req, res, next) {
 
   res.render('index', {
     bootstrapData: JSON.stringify({
-      ticketValues: ticketValues,
+      ticketValues: TICKET_MODEL.getTickets(),
       selectedNumbers: BALL_MODEL.getBalls()
     })
   });

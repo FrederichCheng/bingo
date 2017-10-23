@@ -1,14 +1,15 @@
 
-const randomUtils = require('../../helpers/randomUtils');
+const constants = require('../constants');
+const randomUtils = require('../helpers/randomUtils');
 
-let randomBalls = randomUtils.randomBalls();
+let randomBalls = randomUtils.randomBalls(constants.MAX_BALL_NUM);
 let index = 0;
 const BALL_MODEL = {
     ballList: [],
 
     drawBall() {
         if (index >= randomBalls.length) {
-            randomBalls = randomUtils.randomBalls();
+            randomBalls = randomUtils.randomBalls(constants.MAX_BALL_NUM);
             index = 0;
         }
         let newBall = randomBalls[index];

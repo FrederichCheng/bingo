@@ -1,20 +1,15 @@
-function uniqueRandomBall(ballSet) {
-    let newBall = randomBall();
-    while (ballSet.has(newBall)) {
-        newBall = randomBall();
+function randomBalls(count) {
+    if (count === undefined) {
+        throw new Error('count parameter is not provided');
     }
-    return newBall;
-}
-
-function randomBalls() {
     let balls = [];
     let i;
-    for (i = 0; i < 99; i ++) {
+    for (i = 0; i < count; i++) {
         balls[i] = i + 1;
     }
 
-    for (let i = 0; i < 99; i++) {
-        let rand = Math.floor(Math.random() * 99);
+    for (let i = 0; i < count; i++) {
+        let rand = Math.floor(Math.random() * count);
         let tmp = balls[i];
         balls[i] = balls[rand];
         balls[rand] = tmp;
@@ -24,6 +19,5 @@ function randomBalls() {
 }
 
 module.exports = {
-    uniqueRandomBall: uniqueRandomBall,
     randomBalls: randomBalls
 };

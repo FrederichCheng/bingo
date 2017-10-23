@@ -1,5 +1,6 @@
 const _ = require('lodash');
-const BALL_MODEL = require('../models/BallModel');
+const BALL_MODEL = require('../../models/BallModel');
+const TICKET_MODEL = require('../../models/TicketModel');
 
 class BallController {
     constructor(router) {
@@ -27,7 +28,7 @@ class BallController {
 
     verify(req, res) {
         res.header("Content-Type",'application/json');
-        let ticketValues = req.body.ticketValues;
+        let ticketValues = TICKET_MODEL.getTickets();
         for (let i in ticketValues) {
             let ticket = ticketValues[i].map(n => parseInt(n));
             let intersec = _.intersection(this.model.getBalls(), ticket).sort();
@@ -37,6 +38,7 @@ class BallController {
                     hasWon: true
                 }));
                 BALL_MODEL.reset();
+                TICKET_MODEL.reset();
                 return;
             }
         }
